@@ -9,10 +9,10 @@ import { useContext } from 'react';
 import axios from "axios"
 
 
-function signIp() {
+function signIn() {
     const [showPassword,setShowPassword]=useState(false)
     const navigate=useNavigate()
-    const {serverUrl}=useContext(userDataContext)
+    const {serverUrl,userData,setUserData}=useContext(userDataContext)
 
     const [name,setName]=useState("")
     const [email,setEmail]=useState("")
@@ -29,12 +29,14 @@ function signIp() {
             
         let result =await axios.post(`${serverUrl}/api/auth/signin`,{name,email,password},{withCredentials:true})
         console.log(result.data)
-         
+        setUserData(result.data)
          setLoading(false)
+         navigate("/")
           }catch(error){
                console.log(error)
                setErr(error.response.data.message)
                setLoading(false)
+               setUserData(null)
           }
 
     }
@@ -52,7 +54,7 @@ function signIp() {
 </div>
 {err.length>0 && <p className='text-[17px] text-red-500'>{err}</p>}
 <button className='min-w-[150px] h-[60px] text-black font-semibold bg-white rounded-full text-[19px]' disabled={loading}>{loading?"Loading...":"Sign In"}</button>
-<p className='text-[white] text-[18px] cursor-pointer ' onClick={()=>navigate("/signin")}>Want to create a new account<span className='text-blue-400'>Sign Up</span></p>
+<p className='text-[white] text-[18px] cursor-pointer ' onClick={()=>{navigate("/signup");console.log("labh")}}>Want to create a new account<span className='text-blue-400'>Sign Up</span></p>
 
         </form>
 
@@ -61,4 +63,4 @@ function signIp() {
   )
 }
 
-export default signIp
+export default signIn

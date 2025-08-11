@@ -12,7 +12,7 @@ import axios from "axios"
 function signUp() {
     const [showPassword,setShowPassword]=useState(false)
     const navigate=useNavigate()
-    const {serverUrl}=useContext(userDataContext)
+    const {serverUrl,userData,setUserData}=useContext(userDataContext)
 
     const [name,setName]=useState("")
     const [email,setEmail]=useState("")
@@ -28,13 +28,16 @@ function signUp() {
             
         let result =await axios.post(`${serverUrl}/api/auth/signup`,{name,email,password},{withCredentials:true})
         console.log(result.data)
+        setUserData(result.data)
         setLoading(false)
+        navigate("/customize")
          
    
           }catch(error){
                console.log(error)
                setErr(error.response.data.message)
                setLoading(false)
+               setUserData(null)
           }
 
     }
