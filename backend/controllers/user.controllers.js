@@ -46,6 +46,10 @@ export const askToAssistant=async(req,res)=>{
     try{
         const {command}=req.body
         const user=await User.findById(req.userId)
+        console.log(command)
+        user.history.push(command)
+        user.save() 
+        
         const userName=user.name
         const assistantName=user.assistantName
 
@@ -114,7 +118,7 @@ export const askToAssistant=async(req,res)=>{
 
 
          }
-
+     
     }catch(error){
 res.status(500).json({response:"ask assistant error"})
     }

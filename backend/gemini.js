@@ -40,7 +40,7 @@ Important:
 - Use ${userName} agar koi puche tume kisne banaya 
 - Only respond with the JSON object, nothing else.
 - if someone asks you about weather, directly in response give weather details without telling "showing you the weather" or something like here is your answer
-
+- if someone tolds you to open youtube but not have given what to open on it  then  give it type ="youtube-play and make userInput an empty string"
 
 now your userInput- ${command}
 `;
