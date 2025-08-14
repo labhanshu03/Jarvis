@@ -1,8 +1,11 @@
 import React, { useEffect,useState } from 'react'
 import { createContext } from 'react'
-export const userDataContext=createContext()
-import axios from "axios"
 
+import axios from "axios"
+import { IoTrophy } from 'react-icons/io5'
+
+
+export const userDataContext=createContext()
 function UserContext({children}) {
     const serverUrl="http://localhost:8000"
     const [userData,setUserData]=useState(null)
@@ -19,6 +22,16 @@ function UserContext({children}) {
          console.log(error)
       }
     }
+    const getGeminiResponse=async(command)=>{
+      try{
+        console.log("isfasd")
+        const result=await axios.post(`${serverUrl}/api/user/asktoAssistant`,{command},{withCredentials:true})
+        return result.data
+
+      }catch(error){
+         console.log(error.message)
+      }
+    }
 
     useEffect(()=>{
 handleCurrentUser()
@@ -26,7 +39,7 @@ handleCurrentUser()
 
 
     const value={
-        serverUrl,userData,setUserData,frontendImage,setFrontendImage,backendImage,setBackendImage,selectedImage,setSelectedImage
+        serverUrl,userData,setUserData,frontendImage,setFrontendImage,backendImage,setBackendImage,selectedImage,setSelectedImage,getGeminiResponse
     }
   return (
     <div>

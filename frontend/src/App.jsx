@@ -13,11 +13,11 @@ function App() {
   return (
     <div>
       <Routes>
-         <Route path="/" element={(userData?.assistantImage && userData?.assistantName)?<Home/>:<Navigate to={"/customize"}/>}/>
+         <Route path="/" element={(userData?.assistantImage && userData?.assistantName)?<Home/>:<Navigate to="/customize"/>}/>
         <Route path="/signup" element={!userData?<SignUp/>:<Navigate to={"/"}/>}></Route>
         <Route path="/signin" element={!userData?<SignIn/>:<Navigate to={"/"}/>}></Route>
-        <Route path="/customize" element={userData?<Customize/>:<Navigate to={"/signin"}/>}></Route>
-        <Route path="/customize2" element={userData?<Customize2/>:<Navigate to={"/signin"}/>}></Route>
+        <Route path="/customize" element={userData?<Customize/>:<Navigate to={"/signup"}/>}></Route>
+        <Route path="/customize2" element={userData?<Customize2/>:<Navigate to={"/signup"}/>}></Route>
       </Routes>
     </div>
   )
