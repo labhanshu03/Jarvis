@@ -273,7 +273,7 @@ function Home() {
       <img src={userData?.assistantImage} alt="" className="h-full object-cover"/>
 </div>
 
-<h1 className='text-white text-[18px] font-semibold'>I'm {userData?.assistantName}.Say commands like "hey ,{$userData?.assistantName} open youtube and search cricket on it" always use {$userData?.assistantName} in commands </h1>
+<h1 className='text-white text-[18px] font-semibold'>I'm {userData?.assistantName}.Say commands like "hey ,{userData?.assistantName} open youtube and search cricket on it" always use {userData?.assistantName} in commands </h1>
 {!aiText && <img src={userImg} alt="" className='w-[200px]'/>}
 {aiText && <img src={aiImg} alt="" className='w-[200px]'/>}
 <h1 className="text-white text-[18px] font-semibold text-wrap">{userText?userText:aiText?aiText:null}</h1>
