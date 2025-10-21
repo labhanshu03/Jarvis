@@ -15,8 +15,8 @@ function signIn() {
     const {serverUrl,userData,setUserData}=useContext(userDataContext)
 
     const [name,setName]=useState("")
-    const [email,setEmail]=useState("")
-    const [password,setPassword]=useState("")
+    const [email,setEmail]=useState("labhgupta444@gmail.com")
+    const [password,setPassword]=useState("1234567")
     const [err,setErr]=useState("")
     const [loading,setLoading]=useState(false)
 
